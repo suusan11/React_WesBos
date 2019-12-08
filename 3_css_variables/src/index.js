@@ -18,14 +18,14 @@ class App extends React.Component {
   handleUpdate = (e) => {
     const target = e.target;
     const suffix = target.dataset.sizing || '';
-    
+
     this.setState({
       value: target.value,
       colorValue: target.value,
       name: `--${target.name}`,
       style: (target.value + suffix),
     })
-    
+
     document.documentElement.style.setProperty(this.state.name, this.state.style);
   }
 
@@ -42,7 +42,7 @@ class App extends React.Component {
           <input id="blur" type="range" name="blur" min="0" max="25" value={this.state.value} data-sizing="px" onChange={this.handleUpdate} />
 
           <label htmlFor="base">Base Color</label>
-          <input id="base" type="color" name="base" value={this.state.colorValue} onChange={this.handleUpdate} />
+          <input id="base" type="color" name="base" value={this.state.colorValue} onChange={this.handleUpdate} onMouseMove={this.handleUpdate} />
         </div>
 
         <img src={bg} alt="background" />
